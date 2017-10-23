@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block head_css %}
+    {% include "index/index_css.html" %}
+{% endblock %}
+
+{% block body_content %}
+    {% include "program/program_navi.html" %}
+    <div class="container">
+        {% include "program/program_info.html" %}
+        {% include "program/program_body.html" %}
+        {% include "index/index_modal_edit_program.html" %}
+        {% include "index/index_modal_tail_program.html" %}
+    </div>
+
+    {% include "program/program_js.html" %}
+{% endblock %}

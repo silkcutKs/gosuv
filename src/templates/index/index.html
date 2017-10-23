@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block head_css %}
+    {% include "index/index_css.html" %}
+{% endblock %}
+
+{% block body_content %}
+    {% set NaviBarText="Supervisor 1.0" %}
+    {% include "index/index_navi.html" %}
+    <div class="container">
+        {% include "index/index_top.html" %}
+        {% include "index/index_body.html" %}
+        {% include "index/index_modal_new_program.html" %}
+        {% include "index/index_modal_edit_program.html" %}
+        {% include "index/index_modal_tail_program.html" %}
+
+    </div>
+
+    {% include "index/index_js.html" %}
+{% endblock %}

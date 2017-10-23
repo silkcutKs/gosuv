@@ -1,0 +1,17 @@
+<div class="col-md-12">
+    <div class="alert alert-danger" role="alert" v-if="!isConnectionAlive">
+        <strong>连接断开</strong> try to reconnect after 3s, or <a href="/" class="alert-link">connect
+        immediately</a>
+    </div>
+</div>
+<div class="col-md-12">
+    <button class="btn btn-default btn-sm" id="launch_new_program">
+        <span class="glyphicon glyphicon-plus"></span> 新建Program
+    </button>
+    <button class="btn btn-default btn-sm" v-on:click="refresh">
+        <span class="glyphicon glyphicon-refresh"></span> 刷新
+    </button>
+    <button class="btn btn-default btn-sm" v-on:click="reload" v-if="is_admin">
+        <span class="glyphicon glyphicon-repeat"></span> 重新加载
+    </button>
+</div>

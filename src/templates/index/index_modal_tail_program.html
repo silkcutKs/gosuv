@@ -1,0 +1,26 @@
+<!-- /.modal -->
+{% verbatim %}
+    <div class="modal" id="modal_tailf">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Tail: {{ log.log_process }} </h4>
+                </div>
+                <div class="modal-body">
+
+                    <div style="color:red;font-weight: bold;float:left;height: 30px;line-height: 30px;width: 300px;" id="line_count">
+                        Line: {{ log.line_count }}
+                    </div>
+                    <div class="checkbox text-right" style="display: block;margin-top:0;">
+                        <label><input v-model="log.follow" type="checkbox"> Follow</label>
+                    </div>
+
+                    <div class="realtime-log"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endverbatim %}

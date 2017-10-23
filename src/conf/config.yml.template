@@ -1,0 +1,23 @@
+server:
+  ldap:
+    enabled: true
+    host: 127.0.0.1
+    base: ou=dev,dc=test,dc=org
+    port: 10389
+    use_ssl: false
+    bind_dn: uid=bind,ou=dev,dc=test,dc=org
+    bind_password: bind_account_password
+    user_filter: (uid=%s)
+    attributes:
+    - givenName
+    - sn
+    - mail
+    - uid
+  addr: :11313
+db:
+  db_type: mysql
+  db_dsn: root:password@tcp(127.0.0.1:3306)/gosuv_db?tls=skip-verify&autocommit=true
+host: host_in_nginx
+admins:
+- user1
+- user2

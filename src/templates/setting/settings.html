@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block head_css %}
+    {% include "index/index_css.html" %}
+{% endblock %}
+
+{% block body_content %}
+    {% set NaviBarText="查看所有服务" %}
+    {% include "index/index_navi.html" %}
+
+    <div class="container">
+        {% verbatim %}
+            <div class="col-md-12" style="background-color: #f4f4f4;border-radius: 5px;">
+                <h1 style="margin: 10px 0;">{{ name }}</h1>
+                <p style="word-break:break-word;line-height: 180%;padding: 10px;">
+                    相关进程Ids: {{ childPids.join(',') }}
+                </p>
+            </div>
+        {% endverbatim %}
+        <div class="col-md-12">
+            <div id="chart-cpu" style="width: 100%;height:250px;"></div>
+            <div id="chart-mem" style="width: 100%;height:250px;"></div>
+        </div>
+    </div>
+
+    {% include "setting/settings_js.html" %}
+{% endblock %}

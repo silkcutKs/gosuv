@@ -1,0 +1,15 @@
+[Unit]
+Description=Go Supervisor Service
+After=network.target
+
+[Service]
+WorkingDirectory=/usr/local/service/gosuv/
+ExecStart=/usr/local/service/gosuv/tool_gosuv -c /usr/local/service/gosuv/config.yml start -L /data/logs/gosuv_service.log
+LimitNOFILE=65536
+
+Restart=always
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target

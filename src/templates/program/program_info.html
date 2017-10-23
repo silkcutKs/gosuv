@@ -1,0 +1,32 @@
+{% verbatim %}
+    <div class="col-md-12">
+        <div class="alert alert-danger" role="alert" v-if="!isConnectionAlive">
+            <strong>Connection lost</strong> try to reconnect after 3s, or <a href="/" class="alert-link">connect
+            immediately</a>
+        </div>
+    </div>
+    <div class="col-md-12 program-summary">
+        <div class="program-summary-body">
+            <div class="program-summary-body-desc">
+                命令: <span class="program-meta">{{ program.command }}</span>
+            </div>
+            <span v-if="program.author.includes(current_user) || is_admin">
+            <button v-on:click="cmdProgramStart(program.name)" class="btn btn-default btn-xs"
+                    :disabled='["running", "stopping"].indexOf(program.status) != -1'>
+                <span class="glyphicon glyphicon-play"></span> 启动
+            </button>
+            <button class="btn btn-default btn-xs" v-on:click="cmdProgramStop(program.name)"
+                    :disabled="!canStop(program.status)">
+                <span class="glyphicon glyphicon-stop"></span> 停止
+            </button>
+            <button v-on:click="showEditProgram()" class="btn btn-default btn-xs">
+                <span class="glyphicon glyphicon-edit"></span> 编辑
+            </button>
+            </span>
+
+            <button class="btn btn-default btn-xs" v-on:click="cmdProgramTail(program.name)">
+                <span class="fa fa-file-text-o"></span> 日志
+            </button>
+        </div>
+    </div>
+{% endverbatim %}

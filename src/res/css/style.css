@@ -1,0 +1,166 @@
+/* */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.navbar {
+    border-radius: 0px;
+    background-color: #1b926c;
+    border-color: #1fa67a;
+}
+
+.navbar .navbar-brand {
+    color: white;
+}
+
+.navbar ul.navbar-nav > li > a {
+    color: white;
+}
+
+.navbar ul.navbar-nav > li.media-service > a {
+    color: #eee200;
+}
+
+.realtime-log {
+    height: 40em;
+    overflow: scroll;
+    background-color: #000;
+}
+
+.realtime-log p {
+    margin: 0;
+    line-height: 150%;
+    color: #999;
+    font-size: 15px;
+    word-break: break-all;
+}
+
+.realtime-log p:nth-of-type(odd) {
+    color: #696;
+}
+
+.status {
+    background-color: gray;
+    border-radius: 5px;
+    padding: 5px 6px;
+    color: white;
+}
+
+small.user {
+    color: #f3c504;
+    padding: 15px 0;
+    font-size: 15px;
+    line-height: 20px;
+    display: inline-block;
+}
+
+.color-red {
+    color: red;
+}
+
+.modal-header {
+    min-height: 16.43px;
+    padding: 5px 15px;
+    color: #ff0;
+    background-color: #441004;
+    border-bottom: 1px solid #e5e5e5;
+    border-radius: 5px 5px 0 0;
+}
+
+.modal-title {
+    color: #fff;
+}
+
+button.close {
+    color: #fff;
+    opacity: .8;
+}
+
+.program-summary {
+    padding: 0 15px;
+    border-radius: 5px;
+}
+
+.program-summary-body {
+    padding: 5px 15px 15px;
+    background-color: #f0f0f0;
+}
+
+.program-summary-body-desc {
+    margin: 10px 0;
+    line-height: 170%;
+    font-size: 15px;
+}
+
+.program-meta {
+    color: #ff0000;
+    padding-right: 10px;
+}
+
+.operate-disable {
+    color:#999;
+}
+table {
+    margin-top: 10px;
+}
+
+thead {
+    background-color: #e5e8e6;
+}
+
+.navbar-brand {
+    float: left;
+    padding: 15px 5px;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: normal;
+}
+.sm-breadcrumb {
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.sm-link, .sm-link:hover, .sm-sep {
+    color: white;
+}
+
+.sm-link {
+
+}
+
+.sm-sep {
+
+}
+
+.sm-text {
+    color: #e4e4e4;
+}
+
+#program_edit .form-group, #new_program .form-group {
+    float: left;
+}
+
+.nav > li > .hint {
+    color: #171201;
+}
+
+.nav > li > .hint, .nav > li > a {
+    display: block;
+    padding: 10px 5px;
+}
+
+@media (min-width: 992px) {
+    .modal-lg {
+        width: 100%;
+    }
+}
+
+.media-service {
+
+}
+.media-service a {
+
+}

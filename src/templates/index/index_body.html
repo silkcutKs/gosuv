@@ -1,0 +1,63 @@
+{# 参考: http://v1.vuejs.org/guide/conditional.html #}
+{# 不安全，只是为了防止误操作 #}
+<div class="col-md-12">
+    {% verbatim %}
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td style="width: 120px;">名称</td>
+                <td>状态</td>
+                <td>查看信息</td>
+                <td>操作(<span style="color:#FF3232;">针对所有的进程</span>)</td>
+                <td>责任人</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="p in programs">
+                <td>
+                    <a href="/{{ host }}/program/{{ p.name }}/processes" target="_blank">
+                        {{ p.name }}
+                    </a>
+                </td>
+                <td v-html="p | colorStatus"></td>
+                <td>
+                    <button class="btn btn-default btn-xs" v-on:click="cmdTail(p.name)">
+                        <span class="fa fa-file-text-o"></span> 日志
+                    </button>
+                    <a href="/{{ host }}/prefs/{{ p.name }}" target="_blank" class="btn btn-default btn-xs">
+                        <span class="fa fa-bar-chart"></span> 性能
+                    </a>
+                </td>
+                <td>
+                    <button v-on:click="cmdStart(p.name)" class="btn btn-default btn-xs"
+                            :disabled='["running", "stopping"].indexOf(p.status) != -1'>
+                        <span class="glyphicon glyphicon-play"></span> 启动
+                    </button>
+                    <button class="btn btn-default btn-xs" v-on:click="cmdStop(p.name)"
+                            :disabled="!canStop(p.status)">
+                        <span class="glyphicon glyphicon-stop"></span> 停止
+                    </button>
+                    <span v-if="p.author == current_user || is_admin">
+                        <button v-on:click="showEditProgram(p)" class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-edit"></span> 编辑
+                        </button>
+                        <button class="btn btn-default btn-xs" v-on:click="cmdDelete(p.name)">
+                            <span class="color-red glyphicon glyphicon-trash"></span> 删除
+                        </button>
+                    </span>
+                </td>
+                <td>
+                    <span class="operate-disable">{{ p.author }}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    {% endverbatim %}
+    <div style="color:deeppink">
+        程序日志保存在: /data/tmp_suv/ 目录下, 最多保留3天
+        <ol>
+            <li>/data/tmp_suv/service.log-20170620 表示gosuv运维日志</li>
+            <li>/data/tmp_suv/push-broadcast.log-20170620 表示push-broadcast的标准输出日志</li>
+        </ol>
+    </div>
+</div>

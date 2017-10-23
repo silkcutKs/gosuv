@@ -1,0 +1,16 @@
+<script type="text/javascript">
+    var programName = "{{ name }}";
+    var programInfo = {{ programEnc|safe }};
+    var host = "{{ Host }}";
+    var current_user = "{{ LdapUser }}";
+    var is_admin = {% if IsAdmin %}true{% else %}false{% endif %};
+</script>
+<script src="/{{Host }}/res/js/jquery-3.1.0.min.js"></script>
+<script src="/{{Host }}/res/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="/{{Host }}/res/js/moment.min.js"></script>
+<script src="/{{Host }}/res/js/underscore-min.js"></script>
+<script src="/{{Host }}/res/js/vue-1.0.min.js"></script>
+
+<script src="/{{Host }}/res/js/common.js"></script>
+<script src="/{{Host }}/res/js/alertify.min.js"></script>
+<script src="/{{Host }}/res/js/program.js?ts=06252315"></script>

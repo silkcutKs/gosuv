@@ -1,0 +1,64 @@
+{% verbatim %}
+<!-- model edit -->
+<div class="modal" id="program_edit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form v-on:submit.prevent="editProgram">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title"><span class="glyphicon glyphicon-edit"></span> <span
+                            v-text="edit.program.name"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" style="width:100%;">
+                        <label>命令</label>
+                        <input type="text" name="command" class="form-control" v-model="edit.program.command">
+                    </div>
+                    <div class="form-group" style="width:100%;">
+                        <label>工作目录</label>
+                        <input type="text" name="dir" class="form-control" v-model="edit.program.directory">
+                    </div>
+                    <div class="form-group" style="width:100px;">
+                        <label>User</label>
+                        <input type="text" name="user" class="form-control" v-model="edit.program.user">
+                    </div>
+                    <div class="form-group" style="width:100px;margin-left:50px;">
+                        <label>失败重试次数</label>
+                        <input style="max-width: 5em" type="number" name="retries" class="form-control" min="0"
+                               step="1" v-model.number="edit.program.start_retries">
+                    </div>
+                    <div class="form-group" style="width:100px;margin-left:50px;">
+                        <label style="color: #FF3232">并行进程数</label>
+                        <input style="max-width: 5em" type="number" name="process_num" class="form-control" min="1"
+                               step="1" v-model.number="edit.program.process_num">
+                    </div>
+                    <div class="form-group" style="width:100px;margin-left:50px;">
+                        <label>
+                            <input name="auto_start" type="checkbox" v-model="edit.program.start_auto"> Auto start
+                        </label>
+                    </div>
+                    <div class="form-group" style="width:100%;clear:left;">
+                        <label style="color:#f00;">最长任务执行时间(单位:s)</label>（越小越好，但要保证任务有足够时间完成)
+                        <input style="max-width: 5em" type="number" name="stop_timeout" class="form-control" min="5"
+                               step="1" v-model.number="edit.program.stop_timeout">
+                    </div>
+
+                    <div class="form-group" style="width:100%;clear:left;" v-if="is_admin || edit.program.author.includes(current_user)">
+                        <label>作者(管理员修改所有者)</label>
+                        <input name="author" type="text" v-model="edit.program.author" class="form-control" value="{{ edit.program.author }}">
+                    </div>
+
+                    <div style="clear:both;"></div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endverbatim %}
