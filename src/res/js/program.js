@@ -203,7 +203,16 @@ function clearLogsWithTitle(title) {
     _logDiv.html("");
 }
 
+var URL_PATTERN = "Successfully uploaded to ";
+var PHP_ERROR = "handleError";
+var PHP_ERROR_HINT = "<span style='color:#ff01e3;'>handleError</span>";
+
 function processLogEvent(evt) {
+    // 不follow时，一般是希望停下来查看日志
+    if (!vm.log.follow) {
+        return;
+    }
+
     var content = _lastLogContent + evt.data.replace(/\033\[[0-9;]*m/g, "");
     var lines = content.split(/\n/);
 
@@ -221,6 +230,23 @@ function processLogEvent(evt) {
 
         if (line.length > 0 && !line.endsWith(".ts")) {
             line_count++;
+
+            // 添加视频相关的链接
+            var index = line.indexOf(URL_PATTERN);
+            if (index != -1 && !line.endsWith("merged.m3u8")) {
+                var url = decodeURIComponent(line.substring(index + URL_PATTERN.length));
+
+                var matches = url.match(/recordings\/(\d+)/i);
+                if (matches && matches.length == 2) {
+                    line = line.substring(0, index + URL_PATTERN.length) + "<a href='https://back-service.ushow.media/recording/record/" + matches[1] + "' target=_blank>" + url + "</a>";
+                }
+            }
+
+            // 添加错误处理
+            index = line.indexOf(PHP_ERROR);
+            if (index != -1) {
+                line = line.substring(0, index) + PHP_ERROR_HINT + line.substring(index + PHP_ERROR.length);
+            }
 
             if (line_count > 1000) {
                 var child = _logDiv[0].childNodes[0];

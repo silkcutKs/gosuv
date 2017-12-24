@@ -94,6 +94,7 @@ func (s *Supervisor) addOrUpdateProgram(newProg *Program, saveDb bool) error {
 func (s *Supervisor) readConfigFromDB() (pgs []*Program, err error) {
 	log.Printf("readConfigFromDB ...")
 
+	log.Printf("DB: %s, %s", s.dbType, s.dbDSN)
 	// 创建数据库连接
 	// http://jinzhu.me/gorm/database.html#connecting-to-a-database
 	db, err := gorm.Open(s.dbType, s.dbDSN)

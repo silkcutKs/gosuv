@@ -1,4 +1,7 @@
 CREATE DATABASE gosuv_db character set utf8mb4;
+
+use gosuv_db;
+
 CREATE TABLE `programs` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `host` varchar(100) DEFAULT NULL,
