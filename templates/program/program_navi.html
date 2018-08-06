@@ -1,0 +1,33 @@
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <div class="sm-breadcrumb">
+                    <a class="sm-link" href="/{{ Host }}/">所有程序</a>
+                    <span class="sm-sep">/</span>
+                    <span class="sm-text">
+                        {{ LdapUser }}@{{ Host }}  程序: <span class="program-meta">{{ name }}</span>
+                        进程数: <span class="program-meta">{% verbatim %}{{ program.process_num }}{% endverbatim %}</span>
+                    </span>
+                </div>
+
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                <ul class="nav navbar-nav">
+                </ul>
+                <ul id="nav-right-bar" class="nav navbar-nav navbar-right">
+                    <li><span class="hint">相关: </span></li>
+                    {% include "program/program_navis.html" %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

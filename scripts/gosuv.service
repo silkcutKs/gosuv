@@ -1,0 +1,20 @@
+[Unit]
+Description=Go Supervisor Service
+After=network.target
+
+[Service]
+WorkingDirectory=/usr/local/gosuv/
+ExecStart=/usr/local/gosuv/tool_gosuv -c /usr/local/gosuv/config.yml start -L /data/logs/gosuv_service.log
+LimitNOFILE=65536
+# gosuv自己创建的进程也具有相同的 LimitNOFILE
+# cat /proc/pidxxx/limits 可以看到效果
+# StandardOutput=null
+
+Restart=always
+RestartSec=15
+
+User=worker
+Group=worker
+
+[Install]
+WantedBy=multi-user.target

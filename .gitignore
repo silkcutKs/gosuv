@@ -25,8 +25,8 @@ _testmain.go
 
 dist/
 output/
-src/config.yml
-src/tool*
-src/bindata_assetfs.go
-src/assets_vfsdata.go
-vendor
+config.yml
+tool*
+bindata_assetfs.go
+assets_vfsdata.go
+/vendor

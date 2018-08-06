@@ -1,0 +1,25 @@
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="/{{ Host }}/">{{ NaviBarText }}</a> <small class="user">{{ LdapUser }}@{{ Host }}</small>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                <ul class="nav navbar-nav">
+                </ul>
+                <ul id="nav-right-bar" class="nav navbar-nav navbar-right">
+                    <li><span class="hint">相关: </span></li>
+                    {% include "program/program_navis.html" %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
