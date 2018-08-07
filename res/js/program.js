@@ -41,7 +41,7 @@ var vm = new Vue({
             console.log(_self.edit.program);
             var p = _self.edit.program;
 
-            p.retries = parseInt(p.retries);
+            p.start_retries = parseInt(p.start_retries);
             p.process_num = parseInt(p.process_num);
             p.stop_timeout = parseInt(p.stop_timeout);
 

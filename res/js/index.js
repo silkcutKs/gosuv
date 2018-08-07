@@ -6,7 +6,8 @@ var testPrograms = [{
         command: "",
         dir: "",
         auto_start: true,
-        process_num: 1
+        process_num: 1,
+        start_retries:5,
     },
     status: "running"
 }];
@@ -55,7 +56,7 @@ var vm = new Vue({
             console.log(this.edit.program);
             var p = this.edit.program;
 
-            p.retries = parseInt(p.retries);
+            p.start_retries = parseInt(p.start_retries);
             p.process_num = parseInt(p.process_num);
             p.stop_timeout = parseInt(p.stop_timeout);
 
