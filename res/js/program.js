@@ -41,6 +41,7 @@ var vm = new Vue({
             console.log(_self.edit.program);
             var p = _self.edit.program;
 
+            p.retries = parseInt(p.retries);
             p.process_num = parseInt(p.process_num);
             p.stop_timeout = parseInt(p.stop_timeout);
 
@@ -173,6 +174,7 @@ var vm = new Vue({
 
 var _refreshRequestNum = 0;
 var _refreshRequestTimeout = null;
+
 function refreshRequest() {
     if (_refreshRequestNum > 0 && _refreshRequestTimeout == null) {
         _refreshRequestTimeout = setTimeout(function () {
