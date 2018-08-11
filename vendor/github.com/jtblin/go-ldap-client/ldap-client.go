@@ -8,6 +8,7 @@ import (
 	"fmt"
 
 	"gopkg.in/ldap.v2"
+	"log"
 )
 
 type LDAPClient struct {
@@ -32,17 +33,22 @@ func (lc *LDAPClient) Connect() error {
 		var err error
 		address := fmt.Sprintf("%s:%d", lc.Host, lc.Port)
 		if !lc.UseSSL {
+			log.Printf("address: %s", address)
 			l, err = ldap.Dial("tcp", address)
+
 			if err != nil {
+				log.Printf("Error: %v", err)
 				return err
 			}
 
 			// Reconnect with TLS
-			err = l.StartTLS(&tls.Config{InsecureSkipVerify: true})
-			if err != nil {
-				return err
-			}
+			//err = l.StartTLS(&tls.Config{InsecureSkipVerify: true})
+			//if err != nil {
+			//	log.Printf("StartTLS Error: %v", err)
+			//	return err
+			//}
 		} else {
+			log.Printf("address: %s, %s", address, lc.ServerName)
 			l, err = ldap.DialTLS("tcp", address, &tls.Config{
 				InsecureSkipVerify: lc.InsecureSkipVerify,
 				ServerName:         lc.ServerName,
@@ -52,6 +58,7 @@ func (lc *LDAPClient) Connect() error {
 			}
 		}
 
+		log.Printf("Connect succeed...")
 		lc.Conn = l
 	}
 	return nil
@@ -69,6 +76,7 @@ func (lc *LDAPClient) Close() {
 func (lc *LDAPClient) Authenticate(username, password string) (bool, map[string]string, error) {
 	err := lc.Connect()
 	if err != nil {
+		fmt.Printf("Connect error\n")
 		return false, nil, err
 	}
 
@@ -76,9 +84,12 @@ func (lc *LDAPClient) Authenticate(username, password string) (bool, map[string]
 	if lc.BindDN != "" && lc.BindPassword != "" {
 		err := lc.Conn.Bind(lc.BindDN, lc.BindPassword)
 		if err != nil {
+			fmt.Printf("Bind error\n")
 			return false, nil, err
 		}
 	}
+
+	log.Printf("Bind Succeed\n")
 
 	attributes := append(lc.Attributes, "dn")
 	// Search for the given username

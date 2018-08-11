@@ -133,6 +133,7 @@ func (l *LdapAuth) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func VerifyUserNamePassword(username, password string, cfg *Configuration) (bool, map[string]string, []string) {
+	log.Printf("cfg.Server.Ldap: %+v", cfg.Server.Ldap)
 	client := &ldap.LDAPClient{
 		Base:         cfg.Server.Ldap.Base,
 		Host:         cfg.Server.Ldap.Host,

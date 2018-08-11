@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/glycerine/rbuf"
 	"github.com/wfxiang08/cyutils/utils/atomic2"
-	log "github.com/wfxiang08/cyutils/utils/log"
+	"github.com/wfxiang08/cyutils/utils/log"
 	"sync"
 	"time"
 )
